@@ -1,77 +1,77 @@
-Resolutions = new Mongo.Collection('resolutions');
+Tasks = new Mongo.Collection('tasks');
 
 
 if (Meteor.isClient) {
-  
-  Meteor.subscribe("resolutions");
-  
+
+  Meteor.subscribe("tasks");
+
   Template.body.helpers({
-    resolutions: function() {
+    tasks: function() {
       if(Session.get('hideFinished')) {
-        return Resolutions.find({checked: {$ne: true}});   
-      } 
+        return Tasks.find({checked: {$ne: true}});
+      }
       else {
-        return Resolutions.find();  
+        return Tasks.find();
         }
     },
     hideFinished: function() {
-      return Session.get('hideFinished');  
-    }
-  });
-  
-  Template.body.events({
-    'submit .new-resolution': function(event) {
-      var title = event.target.title.value;
-      
-      Meteor.call("addResolution", title);
-      
-      event.target.title.value = "";
-      
-      return false;
-    },
-    'change .hide-finished': function(event) {
-      Session.set('hideFinished', event.target.checked); 
+      return Session.get('hideFinished');
     }
   });
 
-  
+  Template.body.events({
+    'submit .new-task': function(event) {
+      var title = event.target.title.value;
+
+      Meteor.call("addTask", title);
+
+      event.target.title.value = "";
+
+      return false;
+    },
+    'change .hide-finished': function(event) {
+      Session.set('hideFinished', event.target.checked);
+    }
+  });
+
+
   Accounts.ui.config({
     passwordSignupFields: "USERNAME_ONLY"
   });
-  
+
 }
 
 if (Meteor.isServer) {
   Meteor.startup(function () {
     // code to run on server at startup
   });
-  
-  Meteor.publish("resolutions", function() {
-    return Resolutions.find();   
+
+  Meteor.publish("tasks", function() {
+    return Tasks.find();
   });
 }
 
 Meteor.methods({
-  addResolution: function(title) {
-    Resolutions.insert({
+  addTask: function(title) {
+    Tasks.insert({
         title : title,
         createdAt: new Date(),
         owner: Meteor.userId()
-    }); 
+    });
   },
-  updateResolution: function(id, checked) {
-    Resolutions.update(id, {$set: {checked: checked}}); 
+  updateTask: function(id, checked) {
+    Tasks.update(id, {$set: {checked: checked}});
   },
-  deleteResolution: function(id) {
-    Resolutions.remove(id); 
+  deleteTask: function(id) {
+    Tasks.remove(id);
   },
   setPrivate: function(id, private) {
-    var res = Resolutions.findOne(id)
-    
+    var res = Tasks.findOne(id)
+
     if(res.owner !== Meteor.userId()) {
-      throw new Meteor.Error('not-authorized');  
+      throw new Meteor.Error('not-authorized');
     }
-    
-    Resolutions.update(id, {$set: {private: private}}); 
+
+    Tasks.update(id, {$set: {private: private}});
   }
 });

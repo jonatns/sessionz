@@ -1,17 +1,17 @@
 if (Meteor.isClient) {
-  Template.resolution.helpers({
+  Template.task.helpers({
     isOwner: function() {
       return this.owner === Meteor.userId();
     }
   });
 
 
-  Template.resolution.events({
+  Template.task.events({
     'click .toggle-checked': function() {
-      Meteor.call("updateResolution", this._id, !this.checked);
+      Meteor.call("updateTask", this._id, !this.checked);
     },
     'click .delete': function() {
-      Meteor.call("deleteResolution", this._id);
+      Meteor.call("deleteTask", this._id);
     },
     'click .toggle-private': function() {
       Meteor.call("setPrivate", this._id, !this.private);

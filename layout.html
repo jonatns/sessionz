@@ -1,15 +1,19 @@
 <head>
-	<title>Sessionz</title>
+	<title>sessionz</title>
 </head>
 
 <body>
+	<div id="login-buttons">
+	 {{> loginButtons}}
+	</div>
+
 	<div class="container">
 		<header>
-		  <h1>Tasks</h1>
+		  <h1>Sessionz</h1>
 
 		  <label class="hide-finished">
 			<input type="checkbox" checked="{{hideFinished}}">
-			Hide Finished tasks
+			Hide Finished Tasks
 		  </label>
 		  {{#if currentUser}}
 		  <form class="new-task">
@@ -25,8 +29,6 @@
 		  {{/each}}
 		</ul>
          {{/if}}
-
-    	{{> loginButtons}}
  	 </div>
 
 </body>

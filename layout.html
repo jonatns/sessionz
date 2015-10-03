@@ -1,0 +1,32 @@
+<head>
+	<title>Sessionz</title>
+</head>
+
+<body>
+	<div class="container">
+		<header>
+		  <h1>Tasks</h1>
+
+		  <label class="hide-finished">
+			<input type="checkbox" checked="{{hideFinished}}">
+			Hide Finished tasks
+		  </label>
+		  {{#if currentUser}}
+		  <form class="new-task">
+          	<input type="text" name="title" placeholder="A new task">
+              <input type="submit" value="Submit">
+		  </form>
+		  {{/if}}
+		</header>
+        {{#if currentUser}}
+		<ul>
+		  {{#each tasks}}
+			{{> task}}
+		  {{/each}}
+		</ul>
+         {{/if}}
+
+    	{{> loginButtons}}
+ 	 </div>
+
+</body>

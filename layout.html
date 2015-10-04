@@ -3,11 +3,10 @@
 </head>
 
 <body>
-	<div id="login-buttons">
-	 {{> loginButtons}}
-	</div>
 
 	<div class="container">
+		<div class="navbar-right">
+		</div>
 		<header>
 		  <h1>Sessionz</h1>
 
@@ -15,20 +14,19 @@
 			<input type="checkbox" checked="{{hideFinished}}">
 			Hide Finished Tasks
 		  </label>
-		  {{#if currentUser}}
 		  <form class="new-task">
           	<input type="text" name="title" placeholder="A new task">
+						 <input type="time" name="startTime">
+						 	&nbsp; to &nbsp;
+						  <input type="time" name="endTime">
               <input type="submit" value="Submit">
 		  </form>
-		  {{/if}}
 		</header>
-        {{#if currentUser}}
 		<ul>
 		  {{#each tasks}}
 			{{> task}}
 		  {{/each}}
 		</ul>
-         {{/if}}
  	 </div>
 
 </body>

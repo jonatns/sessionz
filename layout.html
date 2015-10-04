@@ -4,31 +4,64 @@
 
 <body>
 	<div id="login-buttons">
-	 {{> loginButtons}}
+
 	</div>
 
-	<div class="container">
-		<header>
-		  <h1>Sessionz</h1>
-
-		  <label class="hide-finished">
-			<input type="checkbox" checked="{{hideFinished}}">
-			Hide Finished Tasks
-		  </label>
-		  {{#if currentUser}}
+ 	 <div class="container">
+ 	  <h1>Sessionz: Your Study App</h1><br> 
+		
 		  <form class="new-task">
           	<input type="text" name="title" placeholder="A new task">
               <input type="submit" value="Submit">
-		  </form>
-		  {{/if}}
+		  </form> <br> 
+ 	  <!--Div for Remaining Tasks-->
+            <div class="row">
+                  <div class="col-lg-6">
+                      <div class="panel panel-success">
+                          <div class="panel-heading">
+                              <h3 class="panel-title">Remaining Tasks</h3>
+                          </div>
+                          <div class="panel-body">
+                          <div class="container-body">
+							<header>
+		 
 		</header>
-        {{#if currentUser}}
+       
 		<ul>
 		  {{#each tasks}}
 			{{> task}}
 		  {{/each}}
 		</ul>
-         {{/if}}
+        
  	 </div>
+               </div>
+               </div>
+               </div>
+
+               <!--Div for Pending Tasks-->
+
+               <div class="col-lg-6">
+                      <div class="panel panel-success">
+                          <div class="panel-heading">
+                              <h3 class="panel-title">Finished Tasks</h3>
+                          </div>
+                          <div class="panel-body">
+                          <div class="container-body">
+		<header>
+		</header>
+		<ul>
+		  {{#each tasks}}
+			{{> finish}}
+		  {{/each}}
+		</ul>
+		</div>
+                             
+                        </div>
+                    </div>
+                </div>
+               </div>
+               </div>
+
+
 
 </body>

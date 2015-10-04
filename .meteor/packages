@@ -6,7 +6,6 @@
 
 cryptoquick:stylus-multi
 accounts-password
-accounts-ui
 accounts-twitter
 standard-minifiers
 meteor-base
@@ -22,3 +21,4 @@ random
 ejson
 spacebars
 check
+twbs:bootstrap

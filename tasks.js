@@ -35,10 +35,6 @@ if (Meteor.isClient) {
   });
 
 
-  Accounts.ui.config({
-    passwordSignupFields: "USERNAME_ONLY"
-  });
-
 }
 
 if (Meteor.isServer) {
@@ -55,8 +51,7 @@ Meteor.methods({
   addTask: function(title) {
     Tasks.insert({
         title : title,
-        createdAt: new Date(),
-        owner: Meteor.userId()
+        createdAt: new Date()
     });
   },
   updateTask: function(id, checked) {
@@ -64,14 +59,5 @@ Meteor.methods({
   },
   deleteTask: function(id) {
     Tasks.remove(id);
-  },
-  setPrivate: function(id, private) {
-    var res = Tasks.findOne(id)
-
-    if(res.owner !== Meteor.userId()) {
-      throw new Meteor.Error('not-authorized');
-    }
-
-    Tasks.update(id, {$set: {private: private}});
   }
 });

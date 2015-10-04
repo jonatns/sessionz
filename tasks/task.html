@@ -1,16 +1,10 @@
 <template name="task">
-	<li class="{{#if checked}}checked{{/if}}">
-    	<input type="checkbox" checked="{{checked}}" class="toggle-checked">
-		{{#if isOwner}}
-			<button class="toggle-private">
-				{{#if private}}
-					Private
-				{{else}}
-					Public
-				{{/if}}
-			</button>
-		{{/if}}
+	{{#unless checked}}
+	<li class="unchecked">
+    	<input type="checkbox"  class="toggle-checked">
+		
     	<span class="text">{{title}}</span>
     	<button class="delete">Remove</button>
   	</li>
+  	{{/unless}}
 </template>

@@ -1,9 +1,9 @@
 <template name="task">
-	<li class="{{#if checked}}checked{{/if}}">
-    	<input type="checkbox" checked="{{checked}}" class="toggle-checked">
-			<button class="toggle-private">
-			</button>
-    	<span class="text">{{title}}&nbsp;({{duration}}&nbsp;seconds)</span>
-    	<button class="delete">Remove</button>
-  	</li>
+				{{#unless checked}}
+				<li class="unchecked">
+    			<input type="checkbox"  class="toggle-checked">
+    			<span class="text">{{title}}&nbsp;({{formatDuration duration}}&nbsp;min)</span>
+    			<button class="delete">Remove</button>
+  			</li>
+  			{{/unless}}
 </template>

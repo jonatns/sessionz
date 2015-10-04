@@ -6,6 +6,7 @@
 
 cryptoquick:stylus-multi
 accounts-password
+accounts-twitter
 standard-minifiers
 meteor-base
 mobile-experience

@@ -4,29 +4,56 @@
 
 <body>
 
-	<div class="container">
-		<div class="navbar-right">
-		</div>
-		<header>
-		  <h1>Sessionz</h1>
+ 	 <div class="container">
+		<br>
+ 	  <h1 id="brand">Sessionz: Your Study App</h1>
+		<br>
 
-		  <label class="hide-finished">
-			<input type="checkbox" checked="{{hideFinished}}">
-			Hide Finished Tasks
-		  </label>
 		  <form class="new-task">
-          	<input type="text" name="title" placeholder="A new task">
-						 <input type="time" name="startTime">
-						 	&nbsp; to &nbsp;
-						  <input type="time" name="endTime">
-              <input type="submit" value="Submit">
+      	<input type="text" name="title" placeholder="A new task">
+				<input type="time" name="startTime">
+					&nbsp; to &nbsp;
+			  <input type="time" name="endTime">
+        <input type="submit" value="Submit">
 		  </form>
-		</header>
-		<ul>
-		  {{#each tasks}}
-			{{> task}}
-		  {{/each}}
-		</ul>
- 	 </div>
 
+ 	  <!--Div for Remaining Tasks-->
+      <div class="row" id="row-columns">
+      	<div class="col-lg-6">
+        	<div class="panel panel-success">
+          	<div class="panel-heading">
+              <h3 class="panel-title">Remaining Tasks</h3>
+            </div>
+            <div class="panel-body">
+	            <div class="container-body">
+								<ul>
+			  					{{#each tasks}}
+										{{> task}}
+			  					{{/each}}
+								</ul>
+	 	 					</div>
+            </div>
+        </div>
+    	</div>
+
+      <!--Div for Pending Tasks-->
+
+      <div class="col-lg-6">
+      	<div class="panel panel-success">
+          <div class="panel-heading">
+          	<h3 class="panel-title">Finished Tasks</h3>
+          </div>
+          <div class="panel-body">
+            <div class="container-body">
+							<ul>
+		  					{{#each tasks}}
+									{{> finish}}
+		  					{{/each}}
+							</ul>
+						</div>
+					</div>
+      	</div>
+    </div>
+  </div>
+</div>
 </body>

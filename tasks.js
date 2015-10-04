@@ -28,8 +28,8 @@ if (Meteor.isClient) {
       var ST = startTime.split(':');
       var ET = endTime.split(':');
 
-      var Startseconds = (+startTime[0]) * 60 * 60 * 60 + (+startTime[1]) * 60 * 60;
-      var Endseconds = (+endTime[0]) * 60 * 60 * 60 + (+endTime[1]) * 60 * 60;
+      var Startseconds = (+ST[0]) * 3600 + (+ST[1]) * 60;
+      var Endseconds = (+ET[0]) * 3600 + (+ET[1]) * 60;
 
       var duration = Endseconds - Startseconds;
 

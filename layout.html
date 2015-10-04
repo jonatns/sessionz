@@ -8,12 +8,22 @@
 		<br>
  	  <h1 id="brand">Sessionz: Your Study App</h1>
 		<br>
-
 		  <form class="new-task">
-      	<input type="text" name="title" placeholder="A new task">
-				<input type="time" name="startTime">
-					&nbsp; to &nbsp;
-			  <input type="time" name="endTime">
+			<div class="row" id="row-time">
+			<div class="col-lg-6">
+      	<input class="form-control" id="input-task" type="text" name="title" placeholder="A new task">
+			</div>
+			<div class="col-lg-6">
+				{{> selector}}
+			</div>
+			</div>
+			<div class="row" id="row-time">
+				<div class="col-lg-6">
+					<input type="time" name="startTime">
+						&nbsp; to &nbsp;
+			  	<input type="time" name="endTime">
+				</div>
+			</div>
         <input type="submit" value="Submit">
 		  </form>
 
@@ -55,5 +65,10 @@
       	</div>
     </div>
   </div>
+</div>
+<div class="container">
+	<div id="calendar">
+		{{> fullcalendar class="myCalendars" defaultView='agendaDay' height="100%" events=events}}
+</div>
 </div>
 </body>

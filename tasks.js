@@ -35,6 +35,29 @@ if (Meteor.isClient) {
 
       Meteor.call("addTask", title, duration);
 
+      var moment = $('.myCalendars').fullCalendar('getDate');
+
+      var momentFormat = moment.format();
+
+      var MF = momentFormat.split('T', 1);
+
+      var startDateFormat = MF[0] + ' ' + startTime+ ':00';
+
+      var endDateFormat = MF[0] + ' ' + endTime+ ':00';
+
+      var newEvent = {
+        start: startDateFormat,
+        end: endDateFormat,
+        title: title
+      };
+      $('.myCalendars').fullCalendar( 'renderEvent', newEvent)
+
+  $('.myCalendars').fullCalendar({
+      editable: true
+  });
+
+  event.preventDefault();
+
       event.target.title.value = "";
       event.target.start.value = "";
       event.target.endTime.value = "";
@@ -103,6 +126,7 @@ Meteor.methods({
         duration: duration,
         createdAt: new Date()
     });
+
   },
   updateTask: function(id, checked) {
     Tasks.update(id, {$set: {checked: checked}});
